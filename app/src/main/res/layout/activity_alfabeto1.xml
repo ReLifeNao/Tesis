@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Alfabeto_1">
+
+    <!-- Imagen grande de la señal -->
+    <ImageView
+        android:id="@+id/imageViewMainSign"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/alfabeto"
+    android:contentDescription="sing_iamge"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Imágenes de la señal desde diferentes ángulos -->
+    <LinearLayout
+        android:id="@+id/linearLayoutAngles"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/imageViewMainSign"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/linearLayoutOptions">
+
+        <ImageView
+            android:id="@+id/imageViewAngle1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/alfabeto"
+        android:contentDescription="sing_angle"
+        android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/imageViewAngle2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/alfabeto"
+        android:contentDescription="sing_angle"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/imageViewAngle3"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/alfabeto"
+        android:contentDescription="sing_angle"
+        android:layout_marginStart="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutAngles"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageViewMainSign">
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SpeedTheShit"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+
+
+    <!-- Opciones de respuesta -->
+    <LinearLayout
+        android:id="@+id/linearLayoutOptions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutAngles"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <Button
+            android:id="@+id/buttonOption1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Opción 1" />
+
+        <Button
+            android:id="@+id/buttonOption2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Opción 2" />
+
+        <Button
+            android:id="@+id/buttonOption3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Opción 3" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

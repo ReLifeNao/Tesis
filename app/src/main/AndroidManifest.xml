@@ -28,7 +28,10 @@
         android:theme="@style/Theme.OpenCV"
         tools:targetApi="31">
         <activity
-            android:name=".primary_1"
+            android:name=".Alfabeto_1"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".objectDetectorClass"
@@ -40,7 +43,7 @@
             android:name=".CameraActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".primary_1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
