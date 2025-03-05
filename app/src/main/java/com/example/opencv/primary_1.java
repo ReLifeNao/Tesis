@@ -28,6 +28,11 @@ public class primary_1 extends AppCompatActivity {
 
         // Referencia al CardView en el layout (asegúrate de que tenga el id "cardViewAlfabeto" en activity_primary1.xml)
         CardView cardViewAlfabeto = findViewById(R.id.cardViewAlfabeto);
+        CardView cardViewPrueba = findViewById(R.id.Prueba);
+        CardView cardViewGames = findViewById(R.id.games);
+        CardView cardViewAdvance = findViewById(R.id.advance);
+        CardView cardViewDiccionario = findViewById(R.id.diccionario);
+
 
         // Al hacer clic en el CardView se lanza la actividad Alfabeto_1
         cardViewAlfabeto.setOnClickListener(new View.OnClickListener() {
@@ -37,5 +42,38 @@ public class primary_1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        cardViewPrueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(primary_1.this, activity_recognize2.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewGames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(primary_1.this, games_3.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewAdvance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(primary_1.this, Progress_4.class);
+                startActivity(intent);
+            }
+        });
+
+        cardViewDiccionario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(primary_1.this, Diccionario_5_search.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
