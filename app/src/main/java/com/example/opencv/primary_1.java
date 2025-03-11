@@ -11,6 +11,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.opencv.activity_3.games_3;
+import com.example.opencv.activity_4.Progress_4;
+import com.example.opencv.activity_5.Diccionario_5_search;
+
 public class primary_1 extends AppCompatActivity {
 
     @Override

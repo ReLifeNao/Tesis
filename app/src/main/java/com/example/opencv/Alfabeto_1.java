@@ -1,17 +1,17 @@
 package com.example.opencv;
 
-import static android.content.ContentValues.TAG;
-
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.util.Log;
-
+import com.bumptech.glide.Glide;
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -63,6 +63,8 @@ public class Alfabeto_1 extends AppCompatActivity {
         Button nextButton = findViewById(R.id.button);
         nextButton.setOnClickListener(v -> updateUIWithNextLesson());
 
+        setupOptionButtons();
+
         // Mostrar la primera lección
         if (!lessons.isEmpty()) {
             updateUIWithLesson(lessons.get(currentLessonIndex));
@@ -106,7 +108,16 @@ public class Alfabeto_1 extends AppCompatActivity {
         TextView option1View = findViewById(R.id.buttonOption1);
         TextView option2View = findViewById(R.id.buttonOption2);
         TextView option3View = findViewById(R.id.buttonOption3);
-        ImageView imageView = findViewById(R.id.imageViewMainSign);
+        //ImageView imageView = findViewById(R.id.imageViewMainSign);
+        ImageView gifView = findViewById(R.id.imageViewMainSign);
+        ImageView image1 = findViewById(R.id.imageViewAngle1);
+        ImageView image2 = findViewById(R.id.imageViewAngle2);
+        ImageView image3 = findViewById(R.id.imageViewAngle3);
+
+        String baseImageName = lesson.image;
+        String image1_str = baseImageName + "_img1";
+        String image2_str = baseImageName + "_img2";
+        String image3_str = baseImageName + "_img3";
 
         if ("interactive".equals(lesson.type)) {
             linearLayoutOptions.setVisibility(View.VISIBLE);
@@ -120,8 +131,25 @@ public class Alfabeto_1 extends AppCompatActivity {
             textViewDescription.setText(lesson.description);
         }
 
-        int imageResId = getResources().getIdentifier(lesson.image, "drawable", getPackageName());
-        imageView.setImageResource(imageResId);
+        int imgResId1 = getResources().getIdentifier(image1_str, "drawable", getPackageName());
+        int imgResId2 = getResources().getIdentifier(image2_str, "drawable", getPackageName());
+        int imgResId3 = getResources().getIdentifier(image3_str, "drawable", getPackageName());
+
+        Glide.with(this)
+                .load(imgResId1 != 0 ? imgResId1 : R.drawable.alfabeto)
+                .into(image1);
+
+        Glide.with(this)
+                .load(imgResId2 != 0 ? imgResId2 : R.drawable.alfabeto)
+                .into(image2);
+
+        Glide.with(this)
+                .load(imgResId3 != 0 ? imgResId3 : R.drawable.alfabeto)
+                .into(image3);
+
+        int gifResId = getResources().getIdentifier(lesson.image, "drawable", getPackageName());
+        GlideApp.with(this).asGif().load(gifResId).into(gifView);
+
     }
 
     @Override
@@ -147,4 +175,49 @@ public class Alfabeto_1 extends AppCompatActivity {
             this.option3 = option3;
         }
     }
+
+    private void setupOptionButtons() {
+        Button option1Button = findViewById(R.id.buttonOption1);
+        Button option2Button = findViewById(R.id.buttonOption2);
+        Button option3Button = findViewById(R.id.buttonOption3);
+
+        option1Button.setOnClickListener(v -> checkAnswer(option1Button));
+        option2Button.setOnClickListener(v -> checkAnswer(option2Button));
+        option3Button.setOnClickListener(v -> checkAnswer(option3Button));
+    }
+
+    private void checkAnswer(Button selectedButton) {
+        // Aquí debes determinar si la opción seleccionada es la correcta
+        boolean isCorrect = isCorrectAnswer(selectedButton);
+
+        if (isCorrect) {
+            showCorrectAnswerDialog();
+        } else {
+            // Manejar la lógica para respuestas incorrectas si es necesario
+        }
+    }
+
+    private boolean isCorrectAnswer(Button selectedButton) {
+        // Implementa la lógica para verificar si la opción seleccionada es la correcta
+        // Esto es solo un ejemplo, debes adaptarlo a tu lógica específica
+        String correctAnswer = lessons.get(currentLessonIndex).option1; // Cambia esto según tu lógica
+        return selectedButton.getText().toString().equals(correctAnswer);
+    }
+
+    private void showCorrectAnswerDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_correct, null);
+        builder.setView(dialogView);
+
+        Button buttonOk = dialogView.findViewById(R.id.buttonOk);
+        buttonOk.setOnClickListener(v -> {
+            AlertDialog dialog = builder.create();
+            dialog.dismiss();
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

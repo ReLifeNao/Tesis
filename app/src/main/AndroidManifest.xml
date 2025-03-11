@@ -28,19 +28,19 @@
         android:theme="@style/Theme.OpenCV"
         tools:targetApi="31">
         <activity
-            android:name=".Diccionario_5_find"
+            android:name=".activity_5.Diccionario_5_find"
             android:exported="false" />
         <activity
-            android:name=".Diccionario_5_search"
+            android:name=".activity_5.Diccionario_5_search"
             android:exported="false" />
         <activity
-            android:name=".Progress_4"
+            android:name=".activity_4.Progress_4"
             android:exported="false" />
         <activity
-            android:name=".games_speed_3"
+            android:name=".activity_3.games_speed_3"
             android:exported="false" />
         <activity
-            android:name=".games_3"
+            android:name=".activity_3.games_3"
             android:exported="false" />
         <activity
             android:name=".activity_recognize2"
